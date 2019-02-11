@@ -5,8 +5,7 @@ import React, { Component } from 'react'
 class Users extends Component {
 
   componentDidMount() {
-    console.log(this.props.authedUser)
-    console.log(this.props.getUsers())
+    this.props.getUsers()
   }
   render () {
     

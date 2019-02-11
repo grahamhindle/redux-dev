@@ -13,7 +13,7 @@ import { Radio, RadioGroup, FormControlLabel } from '@material-ui/core'
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar'
-import { getUserByAuthor } from '../utils/appUtils';
+import { getUserByAuthor,getUnansweredQuestions,getAnsweredQuestions } from '../utils/appUtils';
 
 
 
@@ -69,12 +69,22 @@ class Question extends Component {
   }
   render() {
 
-    const {  classes,questions,question,users} = this.props
+    const {  classes,questions,question,users,answered,authedUser} = this.props
     const { value } = this.state.value
 
-    console.log('users', this.props)
+    console.log('props',users.id)
 
     const author = getUserByAuthor(this.props.users, question.author)
+    console.log( 'here again',users[authedUser].answers)
+    /*let displayQuestion = []
+    if (answered === 0) {
+      displayQuestion = getUnansweredQuestions(users[authedUser].answers,question.id)  
+    } else {
+      displayQuestion = getAnsweredQuestions(users[authedUser].answers,question.id)
+     
+    }
+    //
+*/
 
     return (
       <div className={classes.root}>

@@ -7,7 +7,7 @@ export default handleActions(
   [SET_QUESTIONS]: (state, action) => action.payload
   }, 
   {
-    [SET_NEW_QUESTION]: (state, action) => state
+    [SET_NEW_QUESTION]: (state, action) => action.payload
   },
 
   {}

@@ -8,11 +8,15 @@ const QuestionContainer = props => <Question {...props} />
 
 
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => {
+  
+  return {
   questions: _.shuffle(_.values(state.questions)),
   users:    _.shuffle(_.values(state.users)),
+  authedUser: state.authedUser
+  }
   
-})
+}
 
 export default connect(
   mapStateToProps,

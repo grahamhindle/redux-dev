@@ -6,10 +6,8 @@ class AuthedUser extends Component {
 
   componentDidMount() {
     
-    this.props.setAuthedUser("grahamhindle");
-    console.log(this.props.getAuthedUser())
-
-    console.log('users',this.props.users)
+    this.props.setAuthedUser("sarahedo");
+    
   }
   render () {
     

@@ -138,7 +138,7 @@ export function _getUsers () {
   
   return new Promise((res, rej) => {
     setTimeout(() => res({...users}), 1000)
-    console.log({...users})
+   
   })
 }
 
@@ -184,7 +184,6 @@ export function _saveQuestion (question) {
           questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
       }
-      console.log('userrs',users)
       res({questions, users})
     }, 2000)
   })

@@ -5,7 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
-import Question from './Question'
+import QuestionContainer from '../containers/QuestionContainer'
 
 const styles = theme => ({
   root: {
@@ -35,11 +35,17 @@ class  Questions extends Component {
   state={
     value:0,
   }
+
+  componentDidMount(){
+    console.log('before')
+    this.props.getQuestions()
+    console.log('after')
+  }
   render(){
     const { classes,  questions,...props} = this.props
     const {value} =this.state.value
 
-    console.log("questions", this.props)
+  
     const  handleChange = (event, value) => {
     
       let rvalue = false
@@ -59,11 +65,11 @@ class  Questions extends Component {
          {value=== 1 && <TabContainer>Answered</TabContainer>}
          { questions.map((question)=> (
           <div key={question.id}>
-          <Question key={question.id} 
+          <QuestionContainer key={question.id} 
             question={question}
             answered={value}
             >
-            </Question>
+            </QuestionContainer>
           </div>
         ))}
 

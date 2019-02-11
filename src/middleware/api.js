@@ -8,10 +8,10 @@ const api = ({  dispatch }) => next => action => {
 
   const { callingFn, onSuccess,onFailure,label} = action.payload
   
-  console.log(action.type)
+  
   if (label) {
     dispatch(apiStart(label));
-    console.log(label)
+    
       callingFn
     .then ((data) => {
       dispatch (onSuccess(data))
