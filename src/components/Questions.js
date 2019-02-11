@@ -37,26 +37,25 @@ class  Questions extends Component {
   }
 
   componentDidMount(){
-    console.log('before')
+    
     this.props.getQuestions()
-    console.log('after')
+    
   }
   render(){
     const { classes,  questions,...props} = this.props
     const {value} =this.state.value
 
   
-    const  handleChange = (event, value) => {
-    
-      let rvalue = false
-      value === 1 ? 
-        rvalue = true : rvalue = false
-        
-      }
+  const handleChange = (event, value) => {
+    console.log('tab',value)
+      this.setState({value: value}); 
+    }
+
+
     return (
       <Paper className={classes.paper}>
          <AppBar position="static">
-           <Tabs variant='fullWidth' value={value} onChange={handleChange}>
+           <Tabs variant='fullWidth' value={this.state.value} onChange={handleChange}>
              <Tab label="Unanswered" />
              <Tab label="Answered" />
            </Tabs>
@@ -67,7 +66,7 @@ class  Questions extends Component {
           <div key={question.id}>
           <QuestionContainer key={question.id} 
             question={question}
-            answered={value}
+            answered={this.state.value}
             >
             </QuestionContainer>
           </div>

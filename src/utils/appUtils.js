@@ -21,6 +21,20 @@ export const apiPayloadCreator = ({
 export function getUserByAuthor(users, user) {
   return (_.findkey(users, x => x.id === user))
 }  
+export function getSelectedAnswer(answers,id,answered){
+  // 
+  const x = answers.filter(key => key = id)
+  switch (answered) {
+    case 0:
+    return false
+    case 1:
+      return x
+    default:
+      break;
+
+  }
+}
+
 
 export function getAnsweredQuestions(answers,id) {
   const x = Object.keys(answers)

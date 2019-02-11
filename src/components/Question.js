@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -65,28 +65,43 @@ const styles = theme => ({
 })
 class Question extends Component {
   state={
-    value:0,
+    value:"optionOne",
+    
   }
+
+  handleChange = (event,value) => {
+  
+    this.setState({value: event.target.value});
+  }
+
+  updateAnswer = () => {
+    
+  }
+  
+
   render() {
 
-    const {  classes,questions,question,users,answered,authedUser} = this.props
-    const { value } = this.state.value
+    const {  classes,answer,question,users,author,answered,authedUser} = this.props
+    
 
-    console.log('props',users.id)
+    console.log(this.props)
 
-    const author = getUserByAuthor(this.props.users, question.author)
-    console.log( 'here again',users[authedUser].answers)
-    /*let displayQuestion = []
+    //const author = getUserByAuthor(this.props.users, question.author)
+    //console.log( 'here again',users[authedUser].answers)
+    let displayQuestion = []
     if (answered === 0) {
-      displayQuestion = getUnansweredQuestions(users[authedUser].answers,question.id)  
+      displayQuestion = getUnansweredQuestions(author.answers,question.id)  
+      
     } else {
-      displayQuestion = getAnsweredQuestions(users[authedUser].answers,question.id)
+      displayQuestion = getAnsweredQuestions(author.answers,question.id)
+      
      
     }
-    //
-*/
+  
 
+    if ( displayQuestion === true) {
     return (
+      
       <div className={classes.root}>
       <ExpansionPanel  defaultExpanded={false}>
         <ExpansionPanelSummary className={classes.button} expandIcon={<ExpandMoreIcon />}>
@@ -115,7 +130,7 @@ class Question extends Component {
             aria-label="answers"
             name="answer11"
             className={classes.group}
-            value={value}
+            value={this.state.value}
             onChange={ this.handleChange}
           >
           <FormControlLabel value={'optionOne'}  control={<Radio />} label={question.optionOne.text} />
@@ -125,11 +140,27 @@ class Question extends Component {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-         
+        {answered === 0 ?
+            <Button 
+            className={classes.button} 
+            variant='contained' 
+            size='large' 
+            fullWidth={true} 
+            onClick={() => this.updateAnswer()}
+          >
+          Submit Answer
+          </Button>
+          : <div />}
         </ExpansionPanelActions>
       </ExpansionPanel>
+      
     </div>
+    
     )
+    }else {
+     return (<Fragment></Fragment>)
+    }
+
   }
 }
 export default withStyles(styles)(Question)

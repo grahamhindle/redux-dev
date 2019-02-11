@@ -2,18 +2,22 @@ import React from 'react'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import Question from '../components/Question'
+import { getSelectedQuestion,getAnswerText, getAnswers } from '../selectors/question';
 
 
 const QuestionContainer = props => <Question {...props} />
 
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state,{question,answered}) => {
   
   return {
   questions: _.shuffle(_.values(state.questions)),
-  users:    _.shuffle(_.values(state.users)),
-  authedUser: state.authedUser
+  author:    state.users[question.author],
+  authedUser: state.authedUser,
+  answer: getAnswerText(state,question.id)
+  
+  
   }
   
 }

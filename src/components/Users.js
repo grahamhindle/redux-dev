@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 
 
 
@@ -23,6 +24,8 @@ class Users extends Component {
           >
           {user.name}
           {user.avatarURL}
+          <br/>
+          {_.values(user.answers)}
        </div>
       ))}
       </div>
