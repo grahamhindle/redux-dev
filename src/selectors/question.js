@@ -2,19 +2,22 @@ import { createSelector } from 'reselect'
 import _ from 'lodash'
 
 
-export const getAnswers = state => state.users[state.authedUser].answers
+const getAnswers = state => (state.users[state.authedUser].answers)
+ 
+
+
+export const getAnswerText = (state,props,answered) => {
   
-
-
-export const getAnswerText = (state,id) => {
   const answers = getAnswers(state)
-   let x =  _.forIn(answers, function (value,key ){
-      if ( key === id){
-        console.log(value)
-        return value
-      }
-        
-    })
+  const obj = Object.keys(answers).find(key=> key === props)
+  if ( obj&& answered){
+    return answers[obj]
+  }
+  else return 'optionOne'
+  
+  
+  
+  
 }
 
 export const getSelectedQuestion = (answered,id) => createSelector(

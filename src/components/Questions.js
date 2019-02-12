@@ -3,6 +3,7 @@ import {Paper} from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Dialog from '@material-ui/core/Dialog'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import QuestionContainer from '../containers/QuestionContainer'
@@ -13,12 +14,24 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   paper: {
-    flexGrow: 1,
+    flex: 'flexGrow',
     margin:'auto',
-    padding: '25px',
+    marginTop: '25px',
+    padding: '20px',
     backgroundColor: '#eeeeee',
     width: '50%',
-  }
+    maxHeight: '500',
+    overflow: 'auto',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+      margin: 'auto',
+      width: 'fit-content',
+      
+    },
 })
 
 const  TabContainer = (props) => {
@@ -34,6 +47,7 @@ const  TabContainer = (props) => {
 class  Questions extends Component {
   state={
     value:0,
+    open:true
   }
 
   componentDidMount(){
@@ -54,6 +68,7 @@ class  Questions extends Component {
 
     return (
       <Paper className={classes.paper}>
+      
          <AppBar position="static">
            <Tabs variant='fullWidth' value={this.state.value} onChange={handleChange}>
              <Tab label="Unanswered" />
@@ -72,6 +87,7 @@ class  Questions extends Component {
           </div>
         ))}
 
+        
          </Paper>
        
     )

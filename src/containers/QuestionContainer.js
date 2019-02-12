@@ -14,8 +14,9 @@ const mapStateToProps = (state,{question,answered}) => {
   return {
   questions: _.shuffle(_.values(state.questions)),
   author:    state.users[question.author],
+  users:    state.users,
   authedUser: state.authedUser,
-  answer: getAnswerText(state,question.id)
+  answer: getAnswerText(state,question.id,answered)
   
   
   }

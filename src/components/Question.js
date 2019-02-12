@@ -84,18 +84,15 @@ class Question extends Component {
     const {  classes,answer,question,users,author,answered,authedUser} = this.props
     
 
-    console.log(this.props)
+   
 
     //const author = getUserByAuthor(this.props.users, question.author)
     //console.log( 'here again',users[authedUser].answers)
-    let displayQuestion = []
+    let displayQuestion = false
     if (answered === 0) {
-      displayQuestion = getUnansweredQuestions(author.answers,question.id)  
-      
+      displayQuestion = getUnansweredQuestions(users[authedUser].answers,question.id) 
     } else {
-      displayQuestion = getAnsweredQuestions(author.answers,question.id)
-      
-     
+      displayQuestion = getAnsweredQuestions(users[authedUser].answers,question.id)
     }
   
 
@@ -130,7 +127,7 @@ class Question extends Component {
             aria-label="answers"
             name="answer11"
             className={classes.group}
-            value={this.state.value}
+            value={answer}
             onChange={ this.handleChange}
           >
           <FormControlLabel value={'optionOne'}  control={<Radio />} label={question.optionOne.text} />
