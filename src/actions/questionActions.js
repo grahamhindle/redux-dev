@@ -10,10 +10,10 @@ export const getQuestions=() =>
   getQuestionsAC({callingFn: _getQuestions(), onSuccess: setQuestions,label:"API_START"})
 
 
-function setQuestions(questions) {
+function setQuestions(question) {
   return { 
     type: SET_QUESTIONS,
-    payload: questions,
+    payload: question,
     label: "API_END"
    }
 }

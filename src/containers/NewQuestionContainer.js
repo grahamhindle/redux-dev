@@ -7,7 +7,7 @@ const NewQuestionContainer = props => <NewQuestion {...props} />
 
 const mapStateToProps = ({authedUser})=> {
   return {
-    authedUser,
+    author:authedUser,
   }
 }
 export default connect(

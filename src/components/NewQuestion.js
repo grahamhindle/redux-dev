@@ -52,8 +52,8 @@ class NewQuestion extends Component {
   state = {
     value:0,
     open: true,
-    optionOne: '',
-    optionTwo: '',
+    optionOneText: '',
+    optionTwoText: '',
   }
   componentDidMount(){
    
@@ -63,9 +63,9 @@ class NewQuestion extends Component {
   }
 
   handleQuestion = () => {
-    const {optionOne,optionTwo} = this.state
-    const { authedUser} = this.props
-    this.props.saveQuestion({optionOne, optionTwo,authedUser})
+    const {optionOneText,optionTwoText} = this.state
+    const { author} = this.props
+    this.props.saveQuestion({optionOneText, optionTwoText,author})
   }
 
   
@@ -83,7 +83,7 @@ class NewQuestion extends Component {
          {value === 0 && <NewQTabContainer>New Question</NewQTabContainer>}
          <form className={classes.container} noValidate autoComplete="off">
         <TextField
-        onChange={this.handleChange('optionOne')}
+        onChange={this.handleChange('optionOneText')}
           id="standard-with-placeholder"
           label="Would You Rather"
           placeholder="Option One"
@@ -92,7 +92,7 @@ class NewQuestion extends Component {
         />     
 
         <TextField
-        onChange={this.handleChange('optionTwo')}
+        onChange={this.handleChange('optionTwoText')}
         id="standard-with-placeholder"
         label="Or..."
         placeholder="Option Two"
