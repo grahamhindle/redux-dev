@@ -4,7 +4,7 @@ import { SET_NEW_QUESTION } from '../constants/actionTypes'
 
 export default handleActions(
   {
-  [SET_NEW_QUESTION]: (state, action) => state
+  [SET_NEW_QUESTION]: (state, action) => action.payload
   }, 
   {}
 )

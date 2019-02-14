@@ -1,20 +1,109 @@
 import React, { Component } from "react"
+import {Paper,Button, AppBar,Tabs, Tab,TextField} from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+
+
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  dense: {
+    marginTop: 19,
+  },
+  paper: {
+    margin:'auto',
+    marginTop: '25px',
+    padding: '20px',
+    backgroundColor: '#eeeeee',
+    width: '50%',
+    maxHeight: '300',
+    overflow: 'auto',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+    
+})
+
+const  NewQTabContainer = (props) => {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
 
 
 class NewQuestion extends Component {
+  state = {
+    value:0,
+    open: true,
+    optionOne: '',
+    optionTwo: '',
+  }
   componentDidMount(){
    
-    let question = {
-      optionOneText:'ice cream',
-      optionTwoText:' chocoloate',
-      author: 'sarahedo'
-    }
-    this.props.saveQuestion(question)
+      }
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
   }
+
+  handleQuestion = () => {
+    const {optionOne,optionTwo} = this.state
+    const { authedUser} = this.props
+    this.props.saveQuestion({optionOne, optionTwo,authedUser})
+  }
+
+  
   render() {
+    const { classes} = this.props
+    const {value} =this.state.value
     return (
-      <div>NewQuestion</div>  
+
+       <Paper className={classes.paper}>
+         <AppBar  position="static">
+           <Button variant="outlined" className={classes.button} color="inherit" onClick={this.handleQuestion}>Save New Question</Button>
+           
+          
+           </AppBar>
+         {value === 0 && <NewQTabContainer>New Question</NewQTabContainer>}
+         <form className={classes.container} noValidate autoComplete="off">
+        <TextField
+        onChange={this.handleChange('optionOne')}
+          id="standard-with-placeholder"
+          label="Would You Rather"
+          placeholder="Option One"
+          className={classes.textField}
+          margin="normal"
+        />     
+
+        <TextField
+        onChange={this.handleChange('optionTwo')}
+        id="standard-with-placeholder"
+        label="Or..."
+        placeholder="Option Two"
+        className={classes.textField}
+        margin="normal"
+      />     
+
+       
+        </form>
+         </Paper>
     )
   }
 }
-export default NewQuestion
+export default withStyles(styles)(NewQuestion)

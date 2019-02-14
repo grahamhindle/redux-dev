@@ -170,7 +170,7 @@ export function _saveQuestion (question) {
     const authedUser = question.author;
     
     const formattedQuestion = formatQuestion(question);
-    
+    console.log('fmt',formattedQuestion)
     setTimeout(() => {
       questions = {
         ...questions,
@@ -184,7 +184,7 @@ export function _saveQuestion (question) {
           questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
       }
-      res({questions, users})
+      res({formattedQuestion})
     }, 2000)
   })
 }
