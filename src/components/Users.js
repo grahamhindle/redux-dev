@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
+import ProgressLoader from './ProgressLoader'
 
 
 
 class Users extends Component {
 
   componentDidMount() {
-    this.props.getUsers()
+    this.props.getUserData()
   }
   render () {
     
     return (
 
       <div>
-      {this.props.users.map(user => (
+
+      { this.props.loading
+          ? <ProgressLoader />:
+        this.props.users.map(user => (
         <div
         style={{
           border: '1px solid blue',

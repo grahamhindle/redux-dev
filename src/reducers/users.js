@@ -1,10 +1,16 @@
 import { handleActions } from 'redux-actions'
-import { SET_USERS } from '../constants/actionTypes'
+import { GET_USERS,UPDATE_USER_QUESTION } from '../constants/actionTypes'
 
 
-export default handleActions(
+const users = handleActions(
   {
-  [SET_USERS]: (state, action) => action.payload
-  }, 
+  [GET_USERS]: (state ,action) => action.payload,
+  
+  [UPDATE_USER_QUESTION]:(state ,action) => action.payload
+
+  },
   {}
 )
+export default users
+
+

@@ -8,15 +8,14 @@ import { GlobalStyle } from '../injectGlobalStyles'
 import { ThemeProvider } from 'styled-components'
 import theme from '../constants/theme'
 import App from '../components/App'
-import {getInitialData} from  '../actions'
+import {handleInitialData} from  '../actions'
 import { PersistGate} from 'redux-persist/integration/react'
 
  
 const Root = () => {
-  getInitialData()
+  store.dispatch(handleInitialData())
   return (
     <Provider store={store}>
-      <PersistGate persistor={persiststore} loading={null}>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
       <StyledContainer>
@@ -26,7 +25,6 @@ const Root = () => {
         <DevTools />
       </StyledContainer>
       </ThemeProvider>
-      </PersistGate>
     </Provider>
   )
 }

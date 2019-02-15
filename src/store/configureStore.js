@@ -14,7 +14,7 @@ const configureStore = initialState => {
       rootReducer, 
       initialState,
       compose(
-        applyMiddleware( thunk, logger ,api),
+        applyMiddleware( thunk,logger ),
         DevTools.instrument()
       )
   )
@@ -24,8 +24,8 @@ const configureStore = initialState => {
     module.hot.accept('../reducers', () => {
       store.replaceReducer(rootReducer)
   }) 
-  const persiststore = persistStore(store)
-      return { store, persiststore}
+  //const persiststore = persistStore(store)
+      return { store }
   }
 }
 export default configureStore

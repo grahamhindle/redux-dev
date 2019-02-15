@@ -1,17 +1,13 @@
 import { handleActions } from 'redux-actions'
-import { SET_QUESTIONS,SET_NEW_QUESTION } from '../constants/actionTypes'
+import { GET_QUESTIONS,UPDATE_QUESTION } from '../constants/actionTypes'
 
-import _ from 'lodash'
 
-export default handleActions(
+
+const questions =  handleActions(
   {
-  [SET_QUESTIONS]: (state, action) => action.payload
+  [GET_QUESTIONS]: (state,action) => action.payload,
+  [UPDATE_QUESTION]: (state, action) => action.payload
   },
-  {
-  [SET_NEW_QUESTION]: (state, action) => {
-    console.log('snq',action.payload)
-     return  _.assign({}, state, action.payload.questions,action.payload.users)
-  }
-  },
-  {},
-)
+  {}
+  )
+export default questions

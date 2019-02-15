@@ -32,7 +32,7 @@ function ButtonAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="fixed"color='white' className={classes.root}>
+      <AppBar position="fixed"color='inherit' className={classes.root}>
         <Toolbar>
           
             

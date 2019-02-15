@@ -13,7 +13,7 @@ function ProgressLoader(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <LinearProgress />
+      <LinearProgress color='secondary'/>
     </div>
   );
 }

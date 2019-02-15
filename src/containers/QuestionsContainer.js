@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import Questions from '../components/Questions'
-import { getQuestions } from '../actions/questionActions'
+import { getQuestionData } from '../actions/questionActions'
 import {GET_QUESTIONS } from '../constants/actionTypes'
 
 const QuestionsContainer = props => <Questions {...props} />
@@ -15,5 +15,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getQuestions },
+  { getQuestionData },
 )(QuestionsContainer);

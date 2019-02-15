@@ -118,6 +118,16 @@ let questions = {
 let authedUser={}
 
 
+export function getInitialData () {
+  return Promise.all([
+    _getUsers(),
+    _getQuestions(),
+  ]).then(([users,questions]) => ({
+    users,
+    questions,
+  }))
+}
+
 export function _getAuthedUser() {
   return new Promise((res,rej) =>{
     setTimeout(() => res(authedUser), 500)
@@ -148,7 +158,7 @@ export function _getQuestions () {
   })
 }
 
-function formatQuestion (  {optionOneText, optionTwoText, author }) {
+export function formatQuestion (  {optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -214,7 +224,7 @@ export function _saveQuestion (question) {
         }
       }
       
-      res({users,questions})
+      res({questions,users})
     }, 2500)
     
   })

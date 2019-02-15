@@ -46,22 +46,22 @@ class MainMenu extends React.Component {
           component={Link} 
           to="/"
           label="Home" 
-          icon={<Icon color='#73AD21' className={classNames(classes.icon, 'fas fa-home')}/>}/>
+          icon={<Icon color='inherit' className={classNames(classes.icon, 'fas fa-home')}/>}/>
         <BottomNavigationAction 
           component={Link} 
           to="/newq"
           label="NewQuestion" 
-          icon={<Icon className={classNames(classes.icon, 'fas fa-question-circle')} />}/>
+          icon={<Icon color='inherit' className={classNames(classes.icon, 'fas fa-question-circle')} />}/>
         <BottomNavigationAction 
           component={Link} 
           to="/score"
           label="Score" 
-          icon={<Icon className={classNames(classes.icon, 'fas fa-poll')} />} />
+          icon={<Icon color='inherit' className={classNames(classes.icon, 'fas fa-poll')} />} />
         <BottomNavigationAction 
         component={Link} 
           to="/profile"
           label="Logoff" 
-          icon={<Icon className={classNames(classes.icon, 'fas fa-sign-out-alt')} />}/>
+          icon={<Icon color='inherit' className={classNames(classes.icon, 'fas fa-sign-out-alt')} />}/>
       </BottomNavigation>
     );
   }

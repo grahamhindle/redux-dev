@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import NewQuestion from '../components/NewQuestion'
-import { saveQuestion } from '../actions/questionActions'
+import { saveNewQuestion } from '../actions'
 
 const NewQuestionContainer = props => <NewQuestion {...props} />
 
@@ -12,5 +12,5 @@ const mapStateToProps = ({authedUser})=> {
 }
 export default connect(
   mapStateToProps,
-  { saveQuestion },
+  { saveNewQuestion },
 )(NewQuestionContainer);

@@ -82,12 +82,7 @@ class Question extends Component {
   render() {
 
     const {  classes,answer,question,users,author,answered,authedUser} = this.props
-    
-
-   
-
     //const author = getUserByAuthor(this.props.users, question.author)
-    
     let displayQuestion = false
     if (answered === 0) {
       displayQuestion = getUnansweredQuestions(users[authedUser].answers,question.id) 

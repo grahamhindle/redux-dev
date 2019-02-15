@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 
 
 
+
 const styles = theme => ({
   root: {
     flex: 1,
@@ -89,7 +90,8 @@ class NewQuestion extends Component {
   handleQuestion = () => {
     const {optionOneText,optionTwoText} = this.state
     const { author} = this.props
-    this.props.saveQuestion({optionOneText, optionTwoText,author})
+   
+    this.props.saveNewQuestion({optionOneText, optionTwoText,author})
   }
 
   
@@ -99,9 +101,9 @@ class NewQuestion extends Component {
     return (
 
        <Paper className={classes.paper}>
-         <AppBar  position="static" color='#73AD21'>
+         <AppBar  position="static" >
          
-           <Typography variant="h6" className={classes.type} color='#73AD21' >Please enter a new Question</Typography>
+           <Typography variant="h6" className={classes.type}  >Please enter a new Question</Typography>
            </AppBar>
 
 
@@ -129,10 +131,10 @@ class NewQuestion extends Component {
       />   
       </Grid>
       <Grid item xs={3}>
-      <Button  variant="contained" size="small" color="#73AD21" className={classes.stickToBottom} onClick={this.handleQuestion}>
+      <Button  variant="contained" size="small"  className={classes.stickToBottom} onClick={this.handleQuestion}>
           Submit
         </Button>
-        <Button  variant="contained" size="small" color="#73AD21" className={classes.stickToBottom}>
+        <Button  variant="contained" size="small"  className={classes.stickToBottom}>
           Cancel
         </Button> 
         </Grid>

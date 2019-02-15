@@ -48,7 +48,7 @@ class  Questions extends Component {
 
   componentDidMount(){
     
-    this.props.getQuestions()
+    this.props.getQuestionData()
     this.setState({open: true}); 
     
   }

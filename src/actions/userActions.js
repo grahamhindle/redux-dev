@@ -1,19 +1,21 @@
 import { createAction } from "redux-actions"
-import { apiPayloadCreator } from "../utils/appUtils"
-import { API } from "../constants/actionTypes"
-import { GET_USERS, SET_USERS } from '../constants/actionTypes'
+import { GET_USERS,UPDATE_USER_QUESTION } from '../constants/actionTypes'
 import {_getUsers } from '../utils/_Data'
-
-const getUsersAC = createAction(API, apiPayloadCreator)
-
-export const getUsers=() =>
-  getUsersAC({dataType: GET_USERS,callingFn: _getUsers(), onSuccess: setUsers,label:"API_START"})
+import { apiStart, apiEnd } from "./apiActions";
 
 
-function setUsers(users) {
-  return { 
-    type: SET_USERS,
-    payload: users,
-    label:"API_END"
-   }
+export const getUsers = createAction(GET_USERS)
+export const updateUserQuestion = createAction(UPDATE_USER_QUESTION)
+
+
+export function getUserData() {
+  return (dispatch) => {
+    return _getUsers()
+      .then((users) => {
+        dispatch(apiStart('GET_USERS'))
+        dispatch(getUsers(users))
+        dispatch(apiEnd('GET_USERS'))
+      
+      })
+    }
 }
