@@ -8,4 +8,5 @@ export const getInitialData = () =>  {
   getQuestions()
   getUsers()
   setAuthedUser('grahamhindle')
+  
 }

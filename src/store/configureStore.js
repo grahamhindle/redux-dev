@@ -4,6 +4,8 @@ import logger from 'redux-logger'
 import api from '../middleware/api'
 import DevTools from '../containers/DevTools'
 import { persistStore } from 'redux-persist'
+import thunk from 'redux-thunk'
+
 
 
 
@@ -12,7 +14,7 @@ const configureStore = initialState => {
       rootReducer, 
       initialState,
       compose(
-        applyMiddleware(logger, api),
+        applyMiddleware( thunk, logger ,api),
         DevTools.instrument()
       )
   )

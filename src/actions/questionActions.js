@@ -6,32 +6,31 @@ import {_getQuestions, _saveQuestion } from '../utils/_Data'
 
 const getQuestionsAC = createAction(API, apiPayloadCreator)
 
+
 export const getQuestions=() =>
-  getQuestionsAC({callingFn: _getQuestions(), onSuccess: setQuestions,label:"API_START"})
+  getQuestionsAC({callingFn: _getQuestions(), onSuccess: setQuestions,label:"GET_QUESTIONS"})
 
-
-function setQuestions(question) {
+function setQuestions(questions) {
   return { 
     type: SET_QUESTIONS,
-    payload: question,
+    payload: questions,
     label: "API_END"
    }
 }
-//now save the new question
-const saveQuestionAC = createAction(API, apiPayloadCreator)
 
 export const saveQuestion=(question) =>{
-
-console.log('AC', question)
-  saveQuestionAC({callingFn: _saveQuestion(question), onSuccess: setNewQuestion,label:"API_START"})
+  return{
+    type:API,
+    payload:{callingFn: _saveQuestion(question), onSuccess: setNewQuestion,label:"API_START"}
+  }
 }
 
 
-function setNewQuestion(question) {
-  console.log(question)
+function setNewQuestion(data) {
+  console.log('setnewq',data)
   return { 
     type: SET_NEW_QUESTION,
-    payload: question,
-    label: "API_END"
+    payload:data,
+    
    }
 }

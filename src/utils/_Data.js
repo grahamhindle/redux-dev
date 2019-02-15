@@ -149,7 +149,6 @@ export function _getQuestions () {
 }
 
 function formatQuestion (  {optionOneText, optionTwoText, author }) {
- console.log(optionOneText)
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -191,15 +190,17 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
       }
 
       res()
-    }, 500)
+    }, 1000)
   })
 }
+
 export function _saveQuestion (question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
-    const formattedQuestion = formatQuestion(question)
-    console.log(formattedQuestion)
+    const formattedQuestion = formatQuestion(question);
+    
     setTimeout(() => {
+      
       questions = {
         ...questions,
         [formattedQuestion.id]: formattedQuestion
@@ -212,8 +213,13 @@ export function _saveQuestion (question) {
           questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
       }
-
-      res(formattedQuestion)
-    }, 1000)
+      
+      res({users,questions})
+    }, 2500)
+    
   })
+  
 }
+
+
+

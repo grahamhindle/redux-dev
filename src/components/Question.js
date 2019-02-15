@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
-import PropTypes from 'prop-types';
+
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -13,7 +13,7 @@ import { Radio, RadioGroup, FormControlLabel } from '@material-ui/core'
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar'
-import { getUserByAuthor,getUnansweredQuestions,getAnsweredQuestions } from '../utils/appUtils';
+import { getUnansweredQuestions,getAnsweredQuestions } from '../utils/appUtils';
 
 
 
@@ -87,7 +87,7 @@ class Question extends Component {
    
 
     //const author = getUserByAuthor(this.props.users, question.author)
-    //console.log( 'here again',users[authedUser].answers)
+    
     let displayQuestion = false
     if (answered === 0) {
       displayQuestion = getUnansweredQuestions(users[authedUser].answers,question.id) 

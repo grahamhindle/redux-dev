@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import QuestionContainer from '../containers/QuestionContainer'
+import ProgressLoader from './ProgressLoader'
 
 const styles = theme => ({
   root: {
@@ -14,7 +15,7 @@ const styles = theme => ({
   },
   paper: {
     margin:'auto',
-    marginTop: '25px',
+    marginTop: '100px',
     padding: '20px',
     backgroundColor: '#eeeeee',
     width: '50%',
@@ -57,11 +58,11 @@ class  Questions extends Component {
     this.setState({open: false}); 
   }
   handleChange = (event, value) => {
-    console.log('tab',value)
+   
       this.setState({value: value}); 
     }
   render(){
-    const { classes,  questions,...props} = this.props
+    const { classes,  questions} = this.props
     const {value} =this.state.value
     return (
       <Paper className={classes.paper}>
@@ -74,7 +75,10 @@ class  Questions extends Component {
          </AppBar>
          {value === 0 && <TabContainer>Unanswered</TabContainer>}
          {value=== 1 && <TabContainer>Answered</TabContainer>}
-         { questions.map((question)=> (
+         
+         {this.props.loading
+          ? <ProgressLoader />:
+          questions.map((question)=> (
           <div key={question.id}>
           <QuestionContainer key={question.id} 
             question={question}

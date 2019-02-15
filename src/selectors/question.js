@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import _ from 'lodash'
+
 
 
 const getAnswers = state => (state.users[state.authedUser].answers)

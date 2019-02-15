@@ -3,15 +3,15 @@ import { apiStart, apiEnd } from '../actions/apiActions'
 
 
 const api = ({  dispatch }) => next => action => {
+  
   next(action)
   if ( action.type !== API) return 
-
+ 
   const { callingFn, onSuccess,onFailure,label} = action.payload
   
   
   if (label) {
     dispatch(apiStart(label));
-    
       callingFn
     .then ((data) => {
       dispatch (onSuccess(data))

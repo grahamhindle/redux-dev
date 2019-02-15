@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import Question from '../components/Question'
-import { getSelectedQuestion,getAnswerText, getAnswers } from '../selectors/question';
+import { getAnswerText } from '../selectors/question';
 
 
 const QuestionContainer = props => <Question {...props} />
