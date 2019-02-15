@@ -66,14 +66,14 @@ class  Questions extends Component {
     const {value} =this.state.value
     return (
       <Paper className={classes.paper}>
-         <AppBar  position="static">
-           <Tabs variant='fullWidth' value={this.state.value} onChange={this.handleChange}>
-             <Tab label="Unanswered" />
+         <AppBar  position="static" >
+           <Tabs variant='fullWidth' value={this.state.value} onChange={this.handleChange} >
+             <Tab color='#73AD21'label="Unanswered" />
              <Tab label="Answered" />
              
            </Tabs>
          </AppBar>
-         {value === 0 && <TabContainer>Unanswered</TabContainer>}
+         {value === 0 && <TabContainer >Unanswered</TabContainer>}
          {value=== 1 && <TabContainer>Answered</TabContainer>}
          
          {this.props.loading

@@ -10,13 +10,18 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const styles = {
   root: {
-    flexGrow: 1,
+    flex: 1,
     position: 'fixed',
     border: '5px solid #73AD21',
   },
   grow: {
     flexGrow: 1,
+    alignItems:'center',
+    justifyContent: 'center',
+    
+
   },
+  
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
@@ -27,13 +32,12 @@ function ButtonAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="fixed"color='white' className={classes.root}>
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
+          
+            
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            News
+            Would You Rather...
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>

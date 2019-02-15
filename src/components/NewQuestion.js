@@ -2,34 +2,58 @@ import React, { Component } from "react"
 import {Paper,Button, AppBar,TextField} from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
+    flex: 1,
     backgroundColor: theme.palette.background.paper,
+  },
+  type: {
+    flex:1,
+    backgroundColor: '#eeeeee',
+    border: '3px solid #73AD21',
+    alignItems: 'center',
+    justify: 'center',
+    
   },
   container: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexWrap: 'wrapoff',
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200,
+    width: '50%',
   },
   button: {
     margin: theme.spacing.unit,
+    height: '50px',
+    width: '25px'
   },
   dense: {
     marginTop: 19,
+  },
+  stickToBottom: {
+    margin: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    alignItems: 'flex-end',
+    bottom: 0,
+    width: '15%',
+    flexDirection: 'row',
+    border: '3px solid #73AD21',
+    
+    flex:1,
   },
   paper: {
     margin:'auto',
     marginTop: '100px',
     padding: '20px',
     backgroundColor: '#eeeeee',
+    border: '3px solid #73AD21',
     width: '50%',
     maxHeight: '300',
     overflow: 'auto',
@@ -75,13 +99,17 @@ class NewQuestion extends Component {
     return (
 
        <Paper className={classes.paper}>
-         <AppBar  position="static">
-           <Button variant="outlined" className={classes.button} color="inherit" onClick={this.handleQuestion}>Save New Question</Button>
-           
-          
+         <AppBar  position="static" color='#73AD21'>
+         
+           <Typography variant="h6" className={classes.type} color='#73AD21' >Please enter a new Question</Typography>
            </AppBar>
+
+
          {value === 0 && <NewQTabContainer>New Question</NewQTabContainer>}
          <form className={classes.container} noValidate autoComplete="off">
+         <Grid item xs={6}>
+         
+       
         <TextField
         onChange={this.handleChange('optionOneText')}
           id="standard-with-placeholder"
@@ -98,7 +126,18 @@ class NewQuestion extends Component {
         placeholder="Option Two"
         className={classes.textField}
         margin="normal"
-      />     
+      />   
+      </Grid>
+      <Grid item xs={3}>
+      <Button  variant="contained" size="small" color="#73AD21" className={classes.stickToBottom} onClick={this.handleQuestion}>
+          Submit
+        </Button>
+        <Button  variant="contained" size="small" color="#73AD21" className={classes.stickToBottom}>
+          Cancel
+        </Button> 
+        </Grid>
+      
+         
 
        
         </form>

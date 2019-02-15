@@ -46,7 +46,7 @@ class MainMenu extends React.Component {
           component={Link} 
           to="/"
           label="Home" 
-          icon={<Icon className={classNames(classes.icon, 'fas fa-home')}/>}/>
+          icon={<Icon color='#73AD21' className={classNames(classes.icon, 'fas fa-home')}/>}/>
         <BottomNavigationAction 
           component={Link} 
           to="/newq"
