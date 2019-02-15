@@ -5,7 +5,12 @@ import { saveQuestion } from '../actions/questionActions'
 
 const NewQuestionContainer = props => <NewQuestion {...props} />
 
+const mapStateToProps = ({authedUser})=> {
+  return {
+    author:authedUser,
+  }
+}
 export default connect(
-  null,
+  mapStateToProps,
   { saveQuestion },
 )(NewQuestionContainer);

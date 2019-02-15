@@ -37,10 +37,12 @@ export function getSelectedAnswer(answers,id,answered){
 
 
 export function getAnsweredQuestions(answers,id) {
+  
   const x = Object.keys(answers)
   const y = x.filter(key => key === id) 
   if ( y.length >0 )
   return true
+  
 }
 
 export function getUnansweredQuestions(answers,id) {

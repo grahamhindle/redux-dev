@@ -10,21 +10,25 @@ export const getQuestions=() =>
   getQuestionsAC({callingFn: _getQuestions(), onSuccess: setQuestions,label:"API_START"})
 
 
-function setQuestions(questions) {
+function setQuestions(question) {
   return { 
     type: SET_QUESTIONS,
-    payload: questions,
+    payload: question,
     label: "API_END"
    }
 }
 //now save the new question
 const saveQuestionAC = createAction(API, apiPayloadCreator)
 
-export const saveQuestion=(question) =>
+export const saveQuestion=(question) =>{
+
+console.log('AC', question)
   saveQuestionAC({callingFn: _saveQuestion(question), onSuccess: setNewQuestion,label:"API_START"})
+}
 
 
 function setNewQuestion(question) {
+  console.log(question)
   return { 
     type: SET_NEW_QUESTION,
     payload: question,
